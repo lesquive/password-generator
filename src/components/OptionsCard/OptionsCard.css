@@ -1,0 +1,12 @@
+.Card {
+  margin-top: 1rem;
+}
+
+.CardActions {
+  display: flex;
+  justify-content: right;
+}
+
+.PrimaryTxt {
+  color: #676767;
+}

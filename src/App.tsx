@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
-import PasswordCard from "./components/PasswordCard/PasswordCard";
+import OptionsCard from "./components/OptionsCard/OptionsCard";
+import PasswordResult from "./components/PasswordResult/PasswordResult";
 import "./App.css";
 
 function App() {
@@ -10,12 +11,18 @@ function App() {
         <Grid
           className="Grid"
           container
-          direction="row"
+          direction="column"
           justifyContent="center"
           alignItems="center"
+          spacing={2}
         >
           <Grid xs={8}>
-            <PasswordCard />
+            <OptionsCard />
+          </Grid>
+          <Grid xs={8}>
+            <PasswordResult />
+            <PasswordResult />
+            <PasswordResult />
           </Grid>
         </Grid>
       </Container>
