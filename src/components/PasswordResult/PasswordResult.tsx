@@ -33,7 +33,7 @@ export default function PasswordResult() {
                 aria-label="Hide Password"
                 component="label"
               >
-                <ContentCopyIcon />
+                <ContentCopyIcon fontSize="small" />
               </IconButton>
             </Grid>
             <Grid item>
@@ -42,7 +42,7 @@ export default function PasswordResult() {
                 aria-label="Hide Password"
                 component="label"
               >
-                <VisibilityOffIcon />
+                <VisibilityOffIcon fontSize="small" />
               </IconButton>
             </Grid>
             <Grid item>
@@ -51,7 +51,7 @@ export default function PasswordResult() {
                 aria-label="Hide Password"
                 component="label"
               >
-                <ClearIcon />
+                <ClearIcon fontSize="small" />
               </IconButton>
             </Grid>
           </Grid>

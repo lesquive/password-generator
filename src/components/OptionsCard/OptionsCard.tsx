@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import "./OptionsCard.css";
 import Options from "./Options/Options";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
+import Settings from "./Settings/Settings";
 
 export default function OptionsCard() {
   return (
@@ -17,6 +18,7 @@ export default function OptionsCard() {
         <Options />
       </CardContent>
       <CardActions className="CardActions">
+        <Settings />
         <Button size="small" variant="outlined" endIcon={<VpnKeyIcon />}>
           Generate
         </Button>
