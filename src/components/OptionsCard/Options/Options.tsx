@@ -13,6 +13,7 @@ export default function Options() {
 
   const [alignment, setAlignment] = useState("both");
   const [numbers, setNumbers] = useState(true);
+  const [specialChars, setSpecialChars] = useState(true);
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -61,8 +62,8 @@ export default function Options() {
           Special Characters {matches ? "!@#$%^&*():" : ""}
         </Typography>
         <Switch
-          checked={numbers}
-          onChange={() => setNumbers(!numbers)}
+          checked={specialChars}
+          onChange={() => setSpecialChars(!specialChars)}
           inputProps={{ "aria-label": "controlled" }}
         />
       </Grid>
