@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Typography from "@mui/material/Typography";
@@ -6,14 +6,17 @@ import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Unstable_Grid2";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import { PasswordContext } from "./../../../contexts/passwordContext";
+import { PasswordContextType } from "./../../../types/types";
 
 export default function Options() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const { enableNumbers, enableSymbols, passAtributes } = useContext(
+    PasswordContext
+  ) as PasswordContextType;
 
   const [alignment, setAlignment] = useState("both");
-  const [numbers, setNumbers] = useState(true);
-  const [specialChars, setSpecialChars] = useState(true);
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -52,8 +55,8 @@ export default function Options() {
           Numbers:
         </Typography>
         <Switch
-          checked={numbers}
-          onChange={() => setNumbers(!numbers)}
+          checked={passAtributes.numbers}
+          onChange={() => enableNumbers(!passAtributes.numbers)}
           inputProps={{ "aria-label": "controlled" }}
         />
       </Grid>
@@ -62,8 +65,8 @@ export default function Options() {
           Special Characters {matches ? "!@#$%^&*():" : ""}
         </Typography>
         <Switch
-          checked={specialChars}
-          onChange={() => setSpecialChars(!specialChars)}
+          checked={passAtributes.symbols}
+          onChange={() => enableSymbols(!passAtributes.symbols)}
           inputProps={{ "aria-label": "controlled" }}
         />
       </Grid>

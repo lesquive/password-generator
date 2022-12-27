@@ -12,7 +12,7 @@ export const PasswordContext = createContext<PasswordContextType | null>(null);
 const uppers = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 const lowers = ["abcdefghijklmnopqrstuvwxyz"];
 const nums = ["0123456789"];
-const specialChars = ["!@#$%^&*()"];
+const symbols = ["!@#$%^&*()"];
 
 //https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 
@@ -27,9 +27,19 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     repeatChars: false,
   });
 
+  function enableNumbers(numbers: boolean) {
+    setPassAtributes({ ...passAtributes, numbers });
+  }
+
+  function enableSymbols(symbols: boolean) {
+    setPassAtributes({ ...passAtributes, symbols });
+  }
+
   const values = {
     passAtributes,
     passwords,
+    enableNumbers,
+    enableSymbols,
   };
 
   return (

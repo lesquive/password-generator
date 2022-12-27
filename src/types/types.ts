@@ -1,3 +1,5 @@
+// @types.todo.ts
+
 export interface IPassword {
   password: string;
 }
@@ -13,6 +15,9 @@ export interface IPasswordAttributes {
 
 export type PasswordContextType = {
   passwords: IPassword[];
+  passAtributes: IPasswordAttributes;
+  enableNumbers: (numbers: boolean) => void;
+  enableSymbols: (symbols: boolean) => void;
 };
 
 export type PasswordProviderProps = {
