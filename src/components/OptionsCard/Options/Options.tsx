@@ -7,12 +7,12 @@ import Grid from "@mui/material/Unstable_Grid2";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { PasswordContext } from "./../../../contexts/passwordContext";
-import { PasswordContextType } from "./../../../types/types";
+import { PasswordContextType, LetterCase } from "./../../../types/types";
 
 export default function Options() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  const { enableNumbers, enableSymbols, passAtributes } = useContext(
+  const { enableNumbers, enableSymbols, setCase, passAtributes } = useContext(
     PasswordContext
   ) as PasswordContextType;
 
@@ -20,9 +20,10 @@ export default function Options() {
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string
+    newAlignment: LetterCase
   ) => {
     setAlignment(newAlignment);
+    setCase(newAlignment);
   };
 
   return (

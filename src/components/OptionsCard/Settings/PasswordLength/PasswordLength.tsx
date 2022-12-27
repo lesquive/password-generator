@@ -1,16 +1,20 @@
-import * as React from "react";
+import { useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import "./PasswordLength.css";
+import { PasswordContext } from "./../../../../contexts/passwordContext";
+import { PasswordContextType } from "./../../../../types/types";
 
 export default function PasswordLength() {
-  const [length, setlength] = React.useState("8");
+  const { ConfTmpLength, tmpLength } = useContext(
+    PasswordContext
+  ) as PasswordContextType;
 
   const handleChange = (event: SelectChangeEvent) => {
-    setlength(event.target.value as string);
+    ConfTmpLength(Number(event.target.value));
   };
 
   return (
@@ -20,7 +24,7 @@ export default function PasswordLength() {
         <Select
           labelId="leng-select"
           id="leng-select"
-          value={length}
+          value={String(tmpLength)}
           label="Length"
           onChange={handleChange}
         >

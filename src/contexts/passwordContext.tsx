@@ -5,6 +5,7 @@ import {
   IPasswordAttributes,
   IPassword,
   PasswordProviderProps,
+  LetterCase,
 } from "../types/types";
 
 export const PasswordContext = createContext<PasswordContextType | null>(null);
@@ -18,6 +19,7 @@ const symbols = ["!@#$%^&*()"];
 
 const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
   const [passwords, setPasswords] = useState<IPassword[]>([]);
+  const [tmpLength, setTmpLength] = useState<Number>(8);
   const [passAtributes, setPassAtributes] = useState<IPasswordAttributes>({
     length: 8,
     upperCase: true,
@@ -35,11 +37,47 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     setPassAtributes({ ...passAtributes, symbols });
   }
 
+  function ConfTmpLength(length: number) {
+    setTmpLength(length);
+  }
+
+  function setCase(letters: LetterCase) {
+    switch (letters) {
+      case "lowercase": {
+        setPassAtributes({
+          ...passAtributes,
+          lowerCase: true,
+          upperCase: false,
+        });
+        break;
+      }
+      case "uppercase": {
+        setPassAtributes({
+          ...passAtributes,
+          lowerCase: false,
+          upperCase: true,
+        });
+        break;
+      }
+      case "both": {
+        setPassAtributes({
+          ...passAtributes,
+          lowerCase: true,
+          upperCase: true,
+        });
+        break;
+      }
+    }
+  }
+
   const values = {
     passAtributes,
     passwords,
+    tmpLength,
     enableNumbers,
     enableSymbols,
+    setCase,
+    ConfTmpLength,
   };
 
   return (
