@@ -31,6 +31,7 @@ export type PasswordContextType = {
   confTmpRepeatChars: (tmpRepeatChars: boolean) => void;
   saveSettings: () => void;
   cancelSettings: () => void;
+  generatePassword: () => void;
 };
 
 export type PasswordProviderProps = {

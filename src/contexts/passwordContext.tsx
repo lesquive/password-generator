@@ -88,6 +88,10 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     }
   }
 
+  function generatePassword() {
+    console.log(passAtributes);
+  }
+
   const values = {
     passAtributes,
     passwords,
@@ -100,6 +104,7 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     confTmpRepeatChars,
     saveSettings,
     cancelSettings,
+    generatePassword,
   };
 
   return (
