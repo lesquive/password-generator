@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,12 +9,12 @@ import { PasswordContext } from "./../../../../contexts/passwordContext";
 import { PasswordContextType } from "./../../../../types/types";
 
 export default function PasswordLength() {
-  const { ConfTmpLength, tmpLength } = useContext(
+  const { confTmpLength, tmpLength } = useContext(
     PasswordContext
   ) as PasswordContextType;
 
   const handleChange = (event: SelectChangeEvent) => {
-    ConfTmpLength(Number(event.target.value));
+    confTmpLength(Number(event.target.value));
   };
 
   return (

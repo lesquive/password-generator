@@ -22,11 +22,15 @@ export interface IPasswordAttributes {
 export type PasswordContextType = {
   passwords: IPassword[];
   passAtributes: IPasswordAttributes;
-  tmpLength: Number;
+  tmpLength: number;
+  tmpRepeatChars: boolean;
   enableNumbers: (numbers: boolean) => void;
   enableSymbols: (symbols: boolean) => void;
   setCase: (letters: LetterCase) => void;
-  ConfTmpLength: (length: number) => void;
+  confTmpLength: (tmpLength: number) => void;
+  confTmpRepeatChars: (tmpRepeatChars: boolean) => void;
+  saveSettings: () => void;
+  cancelSettings: () => void;
 };
 
 export type PasswordProviderProps = {

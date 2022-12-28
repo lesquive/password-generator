@@ -19,7 +19,8 @@ const symbols = ["!@#$%^&*()"];
 
 const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
   const [passwords, setPasswords] = useState<IPassword[]>([]);
-  const [tmpLength, setTmpLength] = useState<Number>(8);
+  const [tmpLength, setTmpLength] = useState<number>(8);
+  const [tmpRepeatChars, setTmpRepeatChars] = useState<boolean>(true);
   const [passAtributes, setPassAtributes] = useState<IPasswordAttributes>({
     length: 8,
     upperCase: true,
@@ -37,8 +38,25 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     setPassAtributes({ ...passAtributes, symbols });
   }
 
-  function ConfTmpLength(length: number) {
-    setTmpLength(length);
+  function confTmpLength(tmpLength: number) {
+    setTmpLength(tmpLength);
+  }
+
+  function confTmpRepeatChars(tmpRepeatChars: boolean) {
+    setTmpRepeatChars(tmpRepeatChars);
+  }
+
+  function saveSettings() {
+    setPassAtributes({
+      ...passAtributes,
+      repeatChars: tmpRepeatChars,
+      length: tmpLength,
+    });
+  }
+
+  function cancelSettings() {
+    setTmpLength(passAtributes.length);
+    setTmpRepeatChars(passAtributes.repeatChars);
   }
 
   function setCase(letters: LetterCase) {
@@ -74,10 +92,14 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     passAtributes,
     passwords,
     tmpLength,
+    tmpRepeatChars,
     enableNumbers,
     enableSymbols,
     setCase,
-    ConfTmpLength,
+    confTmpLength,
+    confTmpRepeatChars,
+    saveSettings,
+    cancelSettings,
   };
 
   return (

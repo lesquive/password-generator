@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -10,15 +10,26 @@ import PasswordLength from "./PasswordLength/PasswordLength";
 import Grid from "@mui/material/Unstable_Grid2";
 import RepeatCharacters from "./RepeatCharacters/RepeatCharacters";
 import "./Settings.css";
+import { PasswordContext } from "./../../../contexts/passwordContext";
+import { PasswordContextType } from "./../../../types/types";
 
 export default function Settings() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const { saveSettings, cancelSettings } = useContext(
+    PasswordContext
+  ) as PasswordContextType;
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleCancel = () => {
+    cancelSettings();
+    setOpen(false);
+  };
+
+  const handleSave = () => {
+    saveSettings();
     setOpen(false);
   };
 
@@ -35,7 +46,7 @@ export default function Settings() {
       </Button>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={handleCancel}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -61,9 +72,9 @@ export default function Settings() {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose} autoFocus>
-            Done
+          <Button onClick={handleCancel}>Cancel</Button>
+          <Button onClick={handleSave} autoFocus>
+            Save
           </Button>
         </DialogActions>
       </Dialog>
