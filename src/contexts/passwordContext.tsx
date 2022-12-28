@@ -10,12 +10,10 @@ import {
 
 export const PasswordContext = createContext<PasswordContextType | null>(null);
 
-const uppers = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-const lowers = ["abcdefghijklmnopqrstuvwxyz"];
-const nums = ["0123456789"];
-const symbols = ["!@#$%^&*()"];
-
-//https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+//options for creating password
+const letters = "abcdefghijklmnopqrstuvwxyz";
+const nums = "0123456789";
+const symbols = "!@#$%^&*()";
 
 const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
   const [passwords, setPasswords] = useState<IPassword[]>([]);
@@ -29,6 +27,24 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     symbols: true,
     repeatChars: false,
   });
+
+  //generate string with possible variables to form password
+  function generateVariables() {
+    let variables = "";
+    if (passAtributes.lowerCase) {
+      variables = variables.concat(letters);
+    }
+    if (passAtributes.upperCase) {
+      variables = variables.concat(letters.toUpperCase());
+    }
+    if (passAtributes.numbers) {
+      variables = variables.concat(nums);
+    }
+    if (passAtributes.symbols) {
+      variables = variables.concat(symbols);
+    }
+    return variables;
+  }
 
   function enableNumbers(numbers: boolean) {
     setPassAtributes({ ...passAtributes, numbers });
@@ -90,6 +106,21 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
 
   function generatePassword() {
     console.log(passAtributes);
+    let charList: string[] = [];
+    let possibilities = generateVariables();
+    //generate a new random character for length chosen.
+    while (charList.length < passAtributes.length) {
+      let value = possibilities.charAt(
+        Math.floor(Math.random() * possibilities.length)
+      );
+      charList.push(value);
+      //if repeat characters is set to false, same values can't be repeated. EE, @@, ee.
+      if (!passAtributes.repeatChars) {
+        charList = charList.filter((x, i, a) => a.indexOf(x) === i);
+      }
+    }
+    let result: IPassword = { password: charList.join("") };
+    setPasswords((prevPasswords) => [...prevPasswords, result]);
   }
 
   const values = {
