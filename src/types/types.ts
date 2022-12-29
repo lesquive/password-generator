@@ -32,6 +32,7 @@ export type PasswordContextType = {
   saveSettings: () => void;
   cancelSettings: () => void;
   generatePassword: () => void;
+  removePassword: (index: number) => void;
 };
 
 export type PasswordProviderProps = {

@@ -105,7 +105,6 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
   }
 
   function generatePassword() {
-    console.log(passAtributes);
     let charList: string[] = [];
     let possibilities = generateVariables();
     //generate a new random character for length chosen.
@@ -123,6 +122,12 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     setPasswords((prevPasswords) => [...prevPasswords, result]);
   }
 
+  function removePassword(index: number) {
+    const tmpPasswords = passwords;
+    tmpPasswords.splice(index, 1);
+    setPasswords(() => tmpPasswords);
+  }
+
   const values = {
     passAtributes,
     passwords,
@@ -136,6 +141,7 @@ const PasswordProvider: FC<PasswordProviderProps> = ({ children }) => {
     saveSettings,
     cancelSettings,
     generatePassword,
+    removePassword,
   };
 
   return (

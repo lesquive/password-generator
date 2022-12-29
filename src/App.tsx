@@ -1,3 +1,4 @@
+import { useEffect, useContext } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import OptionsCard from "./components/OptionsCard/OptionsCard";
@@ -22,8 +23,6 @@ function App() {
               <OptionsCard />
             </Grid>
             <Grid xs={8}>
-              <PasswordResult />
-              <PasswordResult />
               <PasswordResult />
             </Grid>
           </Grid>
