@@ -1,6 +1,6 @@
 ## Password Generator:
 
-![image](https://user-images.githubusercontent.com/51721338/210012110-800f6928-9382-4a7d-b632-85815d5dacb7.png)
+![image](https://user-images.githubusercontent.com/51721338/210012866-e54bd24a-869a-4b0c-b8f7-81df41e77c6e.png)
 
 ## Generate passwords based on specific criteria:
 -Letter types: Lowercase || Uppercase || both\
