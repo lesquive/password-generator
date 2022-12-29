@@ -12,6 +12,7 @@ import { PasswordContextType, IPassword } from "./../../types/types";
 import { PasswordContext } from "./../../contexts/passwordContext";
 import PasswordText from "./PasswordText";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import Tooltip from "@mui/material/Tooltip";
 
 interface Props {
   index: number;
@@ -61,37 +62,46 @@ export default function PasswordContainer({
         <Grid item>
           <Grid container spacing={0}>
             <Grid item>
-              <IconButton
-                color="primary"
-                aria-label="Hide Password"
-                component="label"
-              >
-                <ContentCopyIcon fontSize="small" />
-              </IconButton>
+              <Tooltip title="Copy">
+                <IconButton
+                  color="primary"
+                  aria-label="Hide Password"
+                  component="label"
+                  onClick={() => {
+                    navigator.clipboard.writeText(password.password);
+                  }}
+                >
+                  <ContentCopyIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
             </Grid>
             <Grid item>
-              <IconButton
-                color="primary"
-                aria-label="Hide Password"
-                component="label"
-                onClick={hidePassword}
-              >
-                {hide ? (
-                  <VisibilityOffIcon fontSize="small" />
-                ) : (
-                  <VisibilityIcon fontSize="small" />
-                )}
-              </IconButton>
+              <Tooltip title="Hide">
+                <IconButton
+                  color="primary"
+                  aria-label="Hide Password"
+                  component="label"
+                  onClick={hidePassword}
+                >
+                  {hide ? (
+                    <VisibilityOffIcon fontSize="small" />
+                  ) : (
+                    <VisibilityIcon fontSize="small" />
+                  )}
+                </IconButton>
+              </Tooltip>
             </Grid>
             <Grid item>
-              <IconButton
-                color="primary"
-                aria-label="Hide Password"
-                component="label"
-                onClick={() => deletePassword(index)}
-              >
-                <ClearIcon fontSize="small" />
-              </IconButton>
+              <Tooltip title="Delete">
+                <IconButton
+                  color="primary"
+                  aria-label="Delete Password"
+                  component="label"
+                  onClick={() => deletePassword(index)}
+                >
+                  <ClearIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
             </Grid>
           </Grid>
         </Grid>
