@@ -1,6 +1,22 @@
-# Getting Started with Create React App
+## Password Generator:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://user-images.githubusercontent.com/51721338/210012110-800f6928-9382-4a7d-b632-85815d5dacb7.png)
+
+## Generate passwords based on specific criteria:
+-Letter types: Lowercase || Uppercase || both\
+-Include numbers\
+-Include special characters\
+-Length\
+-Allow repeated characters. ie: AA, @@, aa.
+
+![image](https://user-images.githubusercontent.com/51721338/210012285-b2a876d9-5ffe-47c5-b892-ae25d18c9c15.png)
+
+Includes features like hide password, copy to clipboard, generate multiple passwords, delete passwords.
+
+## Mobile friendly:
+
+![image](https://user-images.githubusercontent.com/51721338/210012670-e26bf9fa-c79a-4c09-8970-c105322bc1a5.png)
+
 
 ## Available Scripts
 
